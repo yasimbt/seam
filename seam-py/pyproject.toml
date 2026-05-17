@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "seam"
+version = "0.1.0"
+description = "Host SDK for streaming live sensor data from nRF microcontrollers"
+requires-python = ">=3.11"
+dependencies = [
+    "pyserial-asyncio",
+    "bleak",
+    "click",
+]
+
+[project.optional-dependencies]
+mcap = ["mcap"]
+rerun = ["rerun-sdk"]
+pandas = ["pandas"]
+dev = ["pytest", "pytest-asyncio"]
+
+[project.scripts]
+seam = "seam.cli:cli"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+markers = ["hardware: tests that require physical hardware"]

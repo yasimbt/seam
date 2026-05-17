@@ -1,0 +1,26 @@
+[device]
+name = "seam-fw-dev"
+transport = "usb-cdc"
+
+[[channel]]
+id = 1
+name = "accel"
+type = "f32x3"
+rate_hz = 100
+unit = "g"
+
+[[channel]]
+id = 2
+name = "temperature"
+type = "f32"
+rate_hz = 10
+unit = "celsius"
+
+[[command]]
+id = 1
+name = "set_rate"
+args = [{ name = "hz", type = "u16" }]
+
+[[command]]
+id = 2
+name = "reset"

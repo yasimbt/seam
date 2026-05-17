@@ -1,0 +1,27 @@
+[package]
+name = "seam-fw"
+version = "0.1.0"
+edition = "2021"
+description = "Firmware crate for Seam — streaming live sensor data from nRF MCUs"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+cobs = { version = "0.3", default-features = false }
+heapless = "0.8"
+embassy-futures = "0.1"
+
+# Embassy HAL crates — only compiled for embedded targets
+[target.'cfg(target_os = "none")'.dependencies]
+embassy-executor = { version = "0.7.0", features = ["arch-cortex-m", "executor-thread", "defmt"] }
+embassy-time = { version = "0.4.0", features = ["defmt"] }
+embassy-nrf = { version = "0.4.0", default-features = false, features = ["defmt", "nrf52840", "time-driver-rtc1", "gpiote"] }
+embassy-usb = { version = "0.4.0", default-features = false, features = ["defmt"] }
+defmt = { version = "1.0", optional = true }
+
+[build-dependencies]
+seam-build = { path = "../seam-build" }
+
+[features]
+default = ["usb-cdc"]
+usb-cdc = []
+ble-nus = []

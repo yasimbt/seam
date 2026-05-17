@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "seam-build",
+    "seam-fw",
+]
+resolver = "2"

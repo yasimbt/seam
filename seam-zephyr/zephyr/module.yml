@@ -1,0 +1,4 @@
+name: seam
+build:
+  cmake: .
+  kconfig: Kconfig

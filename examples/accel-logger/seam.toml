@@ -1,0 +1,17 @@
+[device]
+name      = "accel-logger"
+transport = "usb-cdc"
+
+[[channel]]
+id      = 0
+name    = "accel"
+type    = "f32x3"
+rate_hz = 100
+unit    = "g"
+
+[[channel]]
+id      = 1
+name    = "temperature"
+type    = "f32"
+rate_hz = 10
+unit    = "celsius"

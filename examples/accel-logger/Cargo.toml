@@ -1,0 +1,20 @@
+[package]
+name    = "accel-logger"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+seam-fw = { path = "../../seam-fw", features = ["usb-cdc"] }
+
+[target.'cfg(target_os = "none")'.dependencies]
+embassy-executor = { version = "0.7.0", features = ["arch-cortex-m", "executor-thread", "integrated-timers", "defmt"] }
+embassy-time     = { version = "0.4.0", features = ["defmt"] }
+embassy-nrf      = { version = "0.4.0", default-features = false, features = ["defmt", "nrf52840", "time-driver-rtc1", "gpiote"] }
+defmt            = "1.0"
+defmt-rtt        = "0.4"
+panic-probe      = { version = "0.3", features = ["print-defmt"] }
+cortex-m         = { version = "0.7", features = ["inline-asm"] }
+cortex-m-rt      = "0.7"
+
+[build-dependencies]
+seam-build = { path = "../../seam-build" }

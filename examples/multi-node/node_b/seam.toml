@@ -1,0 +1,17 @@
+[device]
+name      = "node-b"
+transport = "ble-nus"
+
+[[channel]]
+id      = 0
+name    = "accel"
+type    = "f32x3"
+rate_hz = 100
+unit    = "g"
+
+[[channel]]
+id      = 1
+name    = "pressure"
+type    = "f32"
+rate_hz = 10
+unit    = "hPa"

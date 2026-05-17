@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "seam-inspect"
+version = "0.1.0"
+description = "Terminal live inspector for Seam sensor streams"
+requires-python = ">=3.11"
+dependencies = [
+    "textual>=0.47.0",
+    "click>=8.0",
+    "seam",
+]
+
+[project.scripts]
+seam-inspect = "seam_inspect.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["seam_inspect"]

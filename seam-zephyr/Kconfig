@@ -1,0 +1,46 @@
+menuconfig SEAM
+	bool "Seam sensor streaming SDK"
+	help
+	  Enable the Seam SDK for config-driven sensor data streaming.
+	  Reads channel and command definitions from seam.toml at build time
+	  and provides COBS+TLV framing over a pluggable transport.
+
+if SEAM
+
+config SEAM_MAX_CHANNELS
+	int "Maximum number of channels"
+	default 16
+	range 1 255
+	help
+	  Maximum number of channel definitions that can be registered.
+
+config SEAM_MAX_COMMANDS
+	int "Maximum number of commands"
+	default 16
+	range 1 255
+	help
+	  Maximum number of command definitions that can be registered.
+
+config SEAM_MAX_FRAME_PAYLOAD
+	int "Maximum frame payload size in bytes"
+	default 255
+	range 1 255
+	help
+	  Maximum payload size for a single data or command frame.
+
+config SEAM_TRANSPORT_USB_CDC
+	bool "USB CDC-ACM transport"
+	depends on USB_DEVICE_STACK
+	select USB_CDC_ACM
+	help
+	  Use USB CDC-ACM as the Seam transport layer.
+
+config SEAM_TRANSPORT_BLE_NUS
+	bool "BLE Nordic UART Service transport"
+	depends on BT
+	select BT_PERIPHERAL
+	select BT_NUS
+	help
+	  Use BLE Nordic UART Service (NUS) as the Seam transport layer.
+
+endif # SEAM
